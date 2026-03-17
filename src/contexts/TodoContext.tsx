@@ -21,3 +21,11 @@ interface TodoContextType {
     clearCompleted:()=> void; //clear completed work
 }
 
+//Action "type" contains all possible ways to change todo list
+type Action =
+  | { type: "ADD_TODO"; text: string }
+  | { type: "TOGGLE_TODO"; id: string }
+  | { type: "DELETE_TODO"; id: string }
+  | { type: "EDIT_TODO"; id: string; newText: string }
+  | { type: "CLEAR_COMPLETED" }
+  | { type: "SET_TODOS"; todos: Todo[] };
