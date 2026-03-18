@@ -14,11 +14,11 @@ import type { Todo } from "../types";
 
 interface TodoContextType {
     todos: Todo[]; //holds alll todo items
-    addTodo:(text:string)=> void; // adds new todo
-    deleleTodo:(id:string)=>void; //delete todo from the list by id
-    toggleTodo:(id: string)=>void;// this function will let me mark a todo as completed or not by id
-    editTodo:(id:string, newText:String)=>void; //this is for editing exiting todo by id and patch by newText
-    clearCompleted:()=> void; //clear completed work
+    addTodo: (text: string) => void; // adds new todo
+    deleteTodo: (id: string) =>void; //delete todo from the list by id
+    toggleTodo: (id: string) =>void;// this function will let me mark a todo as completed or not by id
+    editTodo: (id: string, newText: string) => void; //this is for editing exiting todo by id and patch by newText
+    clearCompleted: () => void; //clear completed work
 }
 
 //Action "type" contains all possible ways to change todo list
@@ -30,13 +30,11 @@ type Action =
   | { type: "CLEAR_COMPLETED" }
   | { type: "SET_TODOS"; todos: Todo[] };
 
-  //todos- current state of the todo list
-  // dispatch- function to send actions to the reducer
-  // useReducer- hook that manages state and actions in a predictable way
-  // todoReducer- function that takes current state and an action, 
-  // and returns new state based on the action type
-  // []- initial state of the todo list, which is an empty array
-const [todos, dispatch] = useReducer(todoReducer, []);
+ 
+
+// this is the reducer function that defines 
+// how the state of the todo list changes 
+// in response to different actions.
 
 function todoReducer(state: Todo[], action:Action): Todo[]{
     switch(action.type){
@@ -78,3 +76,51 @@ function todoReducer(state: Todo[], action:Action): Todo[]{
 
     }
 }
+
+// this line creates a new context for the todo list,
+// which will allow us to share the todo state and actions 
+// across different components in our application without 
+// having to pass props down manually at every level.   
+const TodoContext = createContext<TodoContextType | undefined>(undefined);
+
+export function TodoProvider({ children }: { children: ReactNode }):React.ReactElement {
+
+  const [todos, dispatch] = useReducer(todoReducer, []);
+
+  const addTodo = (text: string) => {
+    dispatch({ type: "ADD_TODO", text });
+  };
+
+  const deleteTodo = (id: string) => {
+    dispatch({ type: "DELETE_TODO", id });
+  };
+
+  const toggleTodo = (id: string) => {
+    dispatch({ type: "TOGGLE_TODO", id });
+  };
+
+  const editTodo = (id: string, newText: string) => {
+    dispatch({ type: "EDIT_TODO", id, newText });
+  };
+
+  const clearCompleted = () => {
+    dispatch({ type: "CLEAR_COMPLETED" });
+  };
+
+  return (
+    <TodoContext.Provider
+      value={{
+        todos,
+        addTodo,
+        deleteTodo,
+        toggleTodo,
+        editTodo,
+        clearCompleted,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+}
+
+
