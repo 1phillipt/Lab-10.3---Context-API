@@ -85,7 +85,12 @@ const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 export function TodoProvider({ children }: { children: ReactNode }):React.ReactElement {
 
+
+  // this line uses the useReducer hook to manage the state of the todo list.
+  // It takes the todoReducer function and an initial state (an empty array) as arguments, 
+  // and returns the current state (todos) and a dispatch function that we can use to send actions to the reducer.
   const [todos, dispatch] = useReducer(todoReducer, []);
+
 
   const addTodo = (text: string) => {
     dispatch({ type: "ADD_TODO", text });
@@ -94,7 +99,7 @@ export function TodoProvider({ children }: { children: ReactNode }):React.ReactE
   const deleteTodo = (id: string) => {
     dispatch({ type: "DELETE_TODO", id });
   };
-
+  // this function will let me mark a todo as completed or not by id
   const toggleTodo = (id: string) => {
     dispatch({ type: "TOGGLE_TODO", id });
   };
@@ -108,6 +113,8 @@ export function TodoProvider({ children }: { children: ReactNode }):React.ReactE
   };
 
   return (
+    // this provider component wraps its children with the TodoContext.Provider, 
+    // passing down the current list of todos and the action functions as the context value.
     <TodoContext.Provider
       value={{
         todos,
