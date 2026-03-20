@@ -132,11 +132,8 @@ export function TodoProvider({ children }: { children: ReactNode }):React.ReactE
 
 //custom hook to use the TodoContext in our components.
 export function useTodo(){
-  const context = useContext(TodoContext)
-
+  const context = useContext(TodoContext);
   if(!context) throw new Error("useTod must be used within a TodoProvider")
-
     return context;
-
 }
 
