@@ -11,7 +11,6 @@ function App() {
     <ThemeProvider>
       <FilterProvider>
         <TodoProvider children={undefined}>
-          {/* Your app components go here */}
         </TodoProvider>
       </FilterProvider>
     </ThemeProvider>
