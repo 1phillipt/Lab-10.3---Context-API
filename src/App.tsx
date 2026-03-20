@@ -5,12 +5,18 @@ import './App.css'
 import { ThemeProvider } from './contexts/ThemeContext';
 import { FilterProvider } from './contexts/FilterContext';
 import { TodoProvider } from './contexts/TodoContext';
+import { TodoInput } from './components/TodoInput';
+import { TodoList } from './components/TodoList';
+import { FilterButton } from './components/FilterButtons';
 
 function App() {
   return (
     <ThemeProvider>
       <FilterProvider>
-        <TodoProvider children={undefined}>
+        <TodoProvider>
+          <TodoInput />
+          <FilterButton/>
+          <TodoList />
         </TodoProvider>
       </FilterProvider>
     </ThemeProvider>
