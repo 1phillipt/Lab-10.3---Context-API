@@ -1,5 +1,7 @@
+
 import React, { useState } from "react";
 import { useTodo } from "../contexts/TodoContext";
+import "./TodoInput.css";
 
 
 export function TodoInput(){
@@ -17,9 +19,14 @@ export function TodoInput(){
     }
 
     return (
-        <form onSubmit ={handleSubmit}>
-            <input value={text} onChange={e => setText(e.target.value)} placeholder="Add a todo"/>
-            <button type="submit">Add</button>
+        <form className="todo-input-form" onSubmit={handleSubmit}>
+            <input
+                className="todo-input-field"
+                value={text}
+                onChange={e => setText(e.target.value)}
+                placeholder="Add a todo"
+            />
+            <button className="todo-input-button" type="submit">Add</button>
         </form>
     )
 }

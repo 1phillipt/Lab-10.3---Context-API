@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Theme toggling styles */
+.light-theme {
+	background-color: #f9fafb;
+	color: #222;
+	transition: background 0.3s, color 0.3s;
+}
+
+.dark-theme {
+	background-color: #18181b;
+	color: #f3f4f6;
+	transition: background 0.3s, color 0.3s;
+}

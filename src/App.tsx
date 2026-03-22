@@ -8,15 +8,19 @@ import { FilterButton } from './components/FilterButtons';
 import { ThemeToggleButton } from './components/ThemeToggleButton';
 
 
+import { useEffect } from "react";
 function AppContent() {
   const { theme } = useTheme();
+  useEffect(() => {
+    document.body.className = theme === "dark" ? "dark-theme" : "light-theme";
+  }, [theme]);
   return (
-    <div className={theme === "dark" ? "dark-theme" : "light-theme"}>
+    <>
       <ThemeToggleButton />
       <TodoInput />
       <FilterButton />
       <TodoList />
-    </div>
+    </>
   );
 }
 
