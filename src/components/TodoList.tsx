@@ -42,7 +42,7 @@ export function TodoList(){
                         setEditingId(null);
                         setEditText("");
                     }}>Save</button>
-                    <button>cancel</button>
+                    <button onClick={()=>{setEditingId(null); setEditText("");}}>cancel</button>
                   
                     </>): (<>
                     <span>
@@ -52,7 +52,6 @@ export function TodoList(){
                         Edit
                     </button>
                         
-                    
                     </>)
 }
                 </li>
