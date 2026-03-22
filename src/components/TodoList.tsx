@@ -51,6 +51,9 @@ export function TodoList(){
                     <button onClick={()=>{setEditingId(todo.id); setEditText(todo.text)}}>
                         Edit
                     </button>
+                    <button onClick={()=>{deleteTodo(todo.id)}}>
+                        Delete
+                    </button>
                         
                     </>)
 }
