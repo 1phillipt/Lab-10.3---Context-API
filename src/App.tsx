@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { FilterProvider } from './contexts/FilterContext';
 import { TodoProvider } from './contexts/TodoContext';
@@ -15,12 +16,13 @@ function AppContent() {
     document.body.className = theme === "dark" ? "dark-theme" : "light-theme";
   }, [theme]);
   return (
-    <>
+    <div className="app-container">
+      <h1>Todo List</h1>
       <ThemeToggleButton />
       <TodoInput />
       <FilterButton />
       <TodoList />
-    </>
+    </div>
   );
 }
 

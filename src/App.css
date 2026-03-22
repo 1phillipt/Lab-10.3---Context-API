@@ -1,0 +1,74 @@
+/* App.css - Main styles for the Todo App */
+
+.app-container {
+  max-width: 480px;
+  margin: 3rem auto 0 auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  min-height: 60vh;
+  transition: background 0.3s;
+}
+
+.dark-theme .app-container {
+  background: rgba(36,37,46,0.98);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.30);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f3f4f6;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.dark-theme li {
+  background: #23232b;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.7;
+}
+
+button {
+  margin-left: 0.5rem;
+}
+
+input[type="text"] {
+  background: #fff;
+}
+
+.dark-theme input[type="text"] {
+  background: #23232b;
+  color: #f3f4f6;
+  border: 1px solid #444;
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1rem 0.5rem 1.5rem 0.5rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
